@@ -46,8 +46,10 @@
       </table>
 
     <script>
-        var zack = fetch("records.json")
-        console.log(zack)
+        var zack;
+        fetch("records.json")
+        .then(data => zack = data)
+        .then(() => console.log(zack))
         var dataTable = document.getElementById('bodyTable')
         var myReq = new XMLHttpRequest();
         function loadTable() {
