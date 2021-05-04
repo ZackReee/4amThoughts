@@ -1,0 +1,115 @@
+<html>
+<head>
+    <title>Carpark SG</title>
+
+    <style>
+        @font-face {
+  font-family: cityFont;
+  src: url(Slightly\ Eroded.ttf);
+}
+        table, th, td {
+  border: 1px solid black;
+  text-align: center;
+}
+
+    .header {
+        padding: 60px;
+        text-align: center;
+        background-image: 
+        linear-gradient(
+          rgba(0, 0, 0, 0.5),
+          rgba(0, 0, 0, 0.5)),
+        url('banner1.jpg');
+        max-width: 100%;
+        object-fit: cover;
+        color: white;
+        /* font-family:cityFont; */
+        font-size: 30px;
+}
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>4 A.M. Thoughts</h1>
+    </div>
+    
+    <table id="mainTable" style="width:100%; background-color:rgb(12, 13, 15)">
+        <tr>
+          <th>Carpark Number</th>
+          <th>Timestamp</th>
+          <th>Lot Type</th>
+          <th>Total Lots</th>
+          <th>Lots Available</th>
+          <th>Utilization</th>
+        </tr>
+        <tbody id= 'bodyTable'></tbody>
+      </table>
+
+    <script>
+        var zack = fetch("records.json")
+        console.log(zack)
+        var dataTable = document.getElementById('bodyTable')
+        var myReq = new XMLHttpRequest();
+        function loadTable() {
+            myReq.open('GET', 'https://api.data.gov.sg/v1/transport/carpark-availability')
+            myReq.onload = function(){
+            try {
+                var data = JSON.parse(myReq.responseText);
+                var dat = data.items[0].carpark_data;
+                console.log(dat)
+                makeTable(dat)
+            } catch (e) {
+                console.warn('Could not fetch data from database!');
+            }
+        };
+        myReq.send();
+        }
+
+        function makeTable(dt){
+        var row = ''
+        for(var i = 0; i < dt.length;i++){
+            var utilize = Math.round(((dt[i].carpark_info[0].total_lots - dt[i].carpark_info[0].lots_available)/ dt[i].carpark_info[0].total_lots) * 100);
+            if(utilize>=80)
+            row += `<tr style = "color: white;">
+                            <td>${dt[i].carpark_number}</td>
+                            <td>${dt[i].update_datetime}</td>
+                            <td>${dt[i].carpark_info[0].lot_type}</td>
+                            <td>${dt[i].carpark_info[0].total_lots}</td>
+                            <td>${dt[i].carpark_info[0].lots_available}</td>
+                            <td style="background-color:red;">${utilize}%</td>
+                        </tr>`
+            else if(utilize<=30)
+            row += `<tr style = "color: white;">
+                            <td>${dt[i].carpark_number}</td>
+                            <td>${dt[i].update_datetime}</td>
+                            <td>${dt[i].carpark_info[0].lot_type}</td>
+                            <td>${dt[i].carpark_info[0].total_lots}</td>
+                            <td>${dt[i].carpark_info[0].lots_available}</td>
+                            <td style="color: white;">${utilize}%</td>
+                        </tr>`
+            else if(isNaN(utilize))
+            row += `<tr style = "color: white;">
+                            <td>${dt[i].carpark_number}</td>
+                            <td>${dt[i].update_datetime}</td>
+                            <td>${dt[i].carpark_info[0].lot_type}</td>
+                            <td>${dt[i].carpark_info[0].total_lots}</td>
+                            <td>${dt[i].carpark_info[0].lots_available}</td>
+                            <td style="background-color:black; color:#BDEDFF">Not Applicable</td>
+                        </tr>`
+            else
+            row += `<tr style = "color: white;">
+                            <td>${dt[i].carpark_number}</td>
+                            <td>${dt[i].update_datetime}</td>
+                            <td>${dt[i].carpark_info[0].lot_type}</td>
+                            <td>${dt[i].carpark_info[0].total_lots}</td>
+                            <td>${dt[i].carpark_info[0].lots_available}</td>
+                            <td>${utilize}%</td>
+                        </tr>`
+        }
+        dataTable.innerHTML = row;
+        console.log('Jobs Done.')
+        }
+        document.addEventListener('DOMContentLoaded', () => {loadTable()})
+    </script>
+</body>
+</html>
