@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>Carpark SG</title>
+    <title>4am Thoughts</title>
 
     <style>
         @font-face {
@@ -35,12 +35,9 @@
     
     <table id="mainTable" style="width:100%; background-color:rgb(12, 13, 15)">
         <tr>
-          <th>Carpark Number</th>
-          <th>Timestamp</th>
-          <th>Lot Type</th>
-          <th>Total Lots</th>
-          <th>Lots Available</th>
-          <th>Utilization</th>
+          <th>Title</th>
+          <th>Date</th>
+          <th>Entry</th>
         </tr>
         <tbody id= 'bodyTable'></tbody>
       </table>
@@ -53,11 +50,9 @@
         var dataTable = document.getElementById('bodyTable')
         var myReq = new XMLHttpRequest();
         function loadTable() {
-            myReq.open('GET', 'https://api.data.gov.sg/v1/transport/carpark-availability')
-            myReq.onload = function(){
             try {
                 var data = JSON.parse(myReq.responseText);
-                var dat = data.items[0].carpark_data;
+                var dat = zack.items[0];
                 console.log(dat)
                 makeTable(dat)
             } catch (e) {
