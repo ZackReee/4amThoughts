@@ -57,6 +57,14 @@
       </table> -->
 
     <script>
+        var fake = {
+            "records":[
+            {title:"First", date:"07 May 2021", entry:"Doe"},
+            {title:"Second", date:"07 May 2021", entry:"Is a deer"},
+            {title:"Third", date:"08 May 2021", entry:"A female Deer"}
+            ]
+            }
+
         var zack;
         fetch("records.json")
         .then(data => zack = data)
@@ -64,10 +72,16 @@
         var dataTable = document.getElementById('bodyTable')
         var myReq = new XMLHttpRequest();
         function loadTable() {
+            var fake = {
+            "records":[
+            {title:"First", date:"07 May 2021", entry:"Doe"},
+            {title:"Second", date:"07 May 2021", entry:"Is a deer"},
+            {title:"Third", date:"08 May 2021", entry:"A female Deer"}
+            ]
+            }
             try {
-                var data = JSON.parse(myReq.responseText);
-                var dat = zack.items[0];
-                console.log(dat)
+                var dat = fake.records[0];
+                console.log("i love u... ",dat)
                 //makeTable(dat)
             } catch (e) {
                 console.warn('Could not fetch data from database!');
@@ -76,47 +90,11 @@
         myReq.send();
 
         function makeTable(dt){
-        var row = ''
-        for(var i = 0; i < dt.length;i++){
-            var utilize = Math.round(((dt[i].carpark_info[0].total_lots - dt[i].carpark_info[0].lots_available)/ dt[i].carpark_info[0].total_lots) * 100);
-            if(utilize>=80)
-            row += `<tr style = "color: white;">
-                            <td>${dt[i].carpark_number}</td>
-                            <td>${dt[i].update_datetime}</td>
-                            <td>${dt[i].carpark_info[0].lot_type}</td>
-                            <td>${dt[i].carpark_info[0].total_lots}</td>
-                            <td>${dt[i].carpark_info[0].lots_available}</td>
-                            <td style="background-color:red;">${utilize}%</td>
-                        </tr>`
-            else if(utilize<=30)
-            row += `<tr style = "color: white;">
-                            <td>${dt[i].carpark_number}</td>
-                            <td>${dt[i].update_datetime}</td>
-                            <td>${dt[i].carpark_info[0].lot_type}</td>
-                            <td>${dt[i].carpark_info[0].total_lots}</td>
-                            <td>${dt[i].carpark_info[0].lots_available}</td>
-                            <td style="color: white;">${utilize}%</td>
-                        </tr>`
-            else if(isNaN(utilize))
-            row += `<tr style = "color: white;">
-                            <td>${dt[i].carpark_number}</td>
-                            <td>${dt[i].update_datetime}</td>
-                            <td>${dt[i].carpark_info[0].lot_type}</td>
-                            <td>${dt[i].carpark_info[0].total_lots}</td>
-                            <td>${dt[i].carpark_info[0].lots_available}</td>
-                            <td style="background-color:black; color:#BDEDFF">Not Applicable</td>
-                        </tr>`
-            else
-            row += `<tr style = "color: white;">
-                            <td>${dt[i].carpark_number}</td>
-                            <td>${dt[i].update_datetime}</td>
-                            <td>${dt[i].carpark_info[0].lot_type}</td>
-                            <td>${dt[i].carpark_info[0].total_lots}</td>
-                            <td>${dt[i].carpark_info[0].lots_available}</td>
-                            <td>${utilize}%</td>
-                        </tr>`
-        }
-        dataTable.innerHTML = row;
+for (var i = 0; i < fake.records.length;i++){
+document.getElementById("e_title").innerHTML = fake.records[i].title
+document.getElementById("e_body").innerHTML = fake.records[i].entry
+document.getElementById("e_date").innerHTML = fake.records[i].date
+}
         console.log('Jobs Done.')
         }
         document.addEventListener('DOMContentLoaded', () => {loadTable()})
