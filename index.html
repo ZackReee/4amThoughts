@@ -46,6 +46,16 @@
     <div class="header">
         <h1 class = "title">4 A.M. Thoughts</h1>
     </div>
+
+    <div id = "entry_body">
+        <p id="e_title"></p>
+        <br\>
+        <p id="e_body"></p>
+        <br\>
+        <p id="e_date"></p>
+        <br\>
+        <br\>
+    </div>
     
     <!-- <table id="mainTable" style="width:100%; background-color:rgb(255, 255, 255)">
         <tr>
@@ -80,9 +90,8 @@
             ]
             }
             try {
-                var dat = fake.records[0];
-                console.log("i love u... ",dat)
-                //makeTable(dat)
+                console.log("i love u... ",fake.records[0])
+                makeTable(fake)
             } catch (e) {
                 console.warn('Could not fetch data from database!');
             }
@@ -90,10 +99,10 @@
         // myReq.send();
 
         function makeTable(dt){
-for (var i = 0; i < fake.records.length;i++){
-document.getElementById("e_title").innerHTML = fake.records[i].title
-document.getElementById("e_body").innerHTML = fake.records[i].entry
-document.getElementById("e_date").innerHTML = fake.records[i].date
+for (var i = 0; i < dt.records.length;i++){
+document.getElementById("e_title").innerHTML = dt.records[i].title
+document.getElementById("e_body").innerHTML = dt.records[i].entry
+document.getElementById("e_date").innerHTML = dt.records[i].date
 }
         console.log('Jobs Done.')
         }
