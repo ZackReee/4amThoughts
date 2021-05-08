@@ -107,11 +107,11 @@
             var data_body = document.getElementById("main_body")
             var row = '';
             for (var i = 0; i < dt.records.length;i++){
-                row += `<div>
-                            <p>${dt.records[i].title}</p>
-                            <p>${dt.records[i].entry}</p>
-                            <p>${dt.records[i].date}</p>
-                        </div>`
+                row += `
+                        <p>${dt.records[i].title}</p>
+                        <p>${dt.records[i].entry}</p>
+                        <p>${dt.records[i].date}</p>
+                        `
                 // document.getElementById("e_title").innerHTML = dt.records[i].title
                 // document.getElementById("e_body").innerHTML = dt.records[i].entry
                 // document.getElementById("e_date").innerHTML = dt.records[i].date
