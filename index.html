@@ -79,8 +79,11 @@
         // .then(data => zack = data)
         // .then(() => console.log("HELLO4", zack))
         var dataTable = document.getElementById('bodyTable')
-        const data = require('./records.json');
-        console.log("I love cringe teenage losers. ",data);
+        fetch("./records.json")
+        .then(response => {
+        return response.json();
+        })
+        .then(data => console.log(data));
         function loadTable() {
             var fake = {
             "records":[
