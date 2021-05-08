@@ -100,12 +100,13 @@
         // myReq.send();
 
         function makeTable(dt){
-            var toAdd = document.createDocumentFragment();
+            var row = '';
             for (var i = 0; i < dt.records.length;i++){
-                var newDiv = document.createElement('div');
-                newDiv.id = 'r'+i;
-                newDiv.className = 'para';
-                toAdd.appendChild(newDiv);
+                row += `<div>
+                            <p>${dt.records[i].title}</p>
+                            <p>${dt.records[i].entry}</p>
+                            <p>${dt.records[i].date}</p>
+                        </div>`
                 // document.getElementById("e_title").innerHTML = dt.records[i].title
                 // document.getElementById("e_body").innerHTML = dt.records[i].entry
                 // document.getElementById("e_date").innerHTML = dt.records[i].date
