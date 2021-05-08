@@ -109,10 +109,12 @@
                 // document.getElementById("e_title").innerHTML = dt.records[i].title
                 // document.getElementById("e_body").innerHTML = dt.records[i].entry
                 // document.getElementById("e_date").innerHTML = dt.records[i].date
-                document.getElementById("r"+i).innerHTML = i;
             }
 
         document.appendChild(toAdd);
+        document.getElementById("r"+0).innerHTML = 0;
+        document.getElementById("r"+1).innerHTML = 1;
+        document.getElementById("r"+2).innerHTML = 2;
         console.log('Jobs Done.');
         }
         document.addEventListener('DOMContentLoaded', () => {loadTable()});
