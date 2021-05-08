@@ -58,7 +58,7 @@
         <h1 class = "title">4 A.M. Thoughts</h1>
     </div>
 
-    <div class = "para">
+    <div class = "para" id = "main_body">
         <p id="e_title" style="font-size: 24px;"></p>
         <p id="e_body" style= "font-size: 16px;"></p>
         <br\>
@@ -100,6 +100,7 @@
         // myReq.send();
 
         function makeTable(dt){
+            data_body = getElementById("main_body")
             var row = '';
             for (var i = 0; i < dt.records.length;i++){
                 row += `<div>
@@ -111,7 +112,7 @@
                 // document.getElementById("e_body").innerHTML = dt.records[i].entry
                 // document.getElementById("e_date").innerHTML = dt.records[i].date
             }
-            dataTable.innerHTML = row;
+            data_body.innerHTML = row;
         console.log('Jobs Done.');
         }
         document.addEventListener('DOMContentLoaded', () => {loadTable()});
