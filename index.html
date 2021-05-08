@@ -112,9 +112,10 @@
             }
 
         document.appendChild(toAdd);
-        document.getElementById("r"+0).innerHTML = 0;
-        document.getElementById("r"+1).innerHTML = 1;
-        document.getElementById("r"+2).innerHTML = 2;
+        console.log("Oooh <3 ", toAdd)
+        document.getElementById('r'+0).innerHTML = 0;
+        document.getElementById('r'+1).innerHTML = 1;
+        document.getElementById('r'+2).innerHTML = 2;
         console.log('Jobs Done.');
         }
         document.addEventListener('DOMContentLoaded', () => {loadTable()});
