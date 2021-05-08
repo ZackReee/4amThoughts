@@ -66,14 +66,6 @@
     </div>
 
     <script>
-        var fake = {
-            "records":[
-            {title:"First", date:"07 May 2021", entry:"Doe"},
-            {title:"Second", date:"07 May 2021", entry:"Is a deer"},
-            {title:"Third", date:"08 May 2021", entry:"A female Deer"}
-            ]
-            }
-
         // fetch("records.json")
         // .then(data => zack = data)
         // .then(() => console.log("HELLO4", zack))
@@ -94,7 +86,7 @@
             ]
             }
             try {
-                makeTable(local_json)
+                makeTable(obj)
             } catch (e) {
                 console.warn('Could not fetch data from database!');
             }
