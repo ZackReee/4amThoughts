@@ -79,7 +79,8 @@
         // .then(data => zack = data)
         // .then(() => console.log("HELLO4", zack))
         var dataTable = document.getElementById('bodyTable')
-        var myReq = new XMLHttpRequest();
+        const data = require('./records.json');
+        console.log("I love cringe teenage losers. ",data);
         function loadTable() {
             var fake = {
             "records":[
@@ -89,12 +90,12 @@
             ]
             }
             makeTable(fake)
-            // try {
-            //     console.log("i love u,  ",fake.records[0])
-            //     makeTable(fake)
-            // } catch (e) {
-            //     console.warn('Could not fetch data from database!');
-            // }
+            try {
+                console.log("i love u,  ",fake.records[0])
+                makeTable(fake)
+            } catch (e) {
+                console.warn('Could not fetch data from database!');
+            }
         };
         // myReq.send();
 
@@ -113,9 +114,6 @@
                         <p>${dt.records[i].date}</p>
                         </div>
                         `
-                // document.getElementById("e_title").innerHTML = dt.records[i].title
-                // document.getElementById("e_body").innerHTML = dt.records[i].entry
-                // document.getElementById("e_date").innerHTML = dt.records[i].date
             }
             data_body.innerHTML = row;
         console.log('Jobs Done.');
