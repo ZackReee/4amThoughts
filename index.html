@@ -17,8 +17,8 @@
         text-align: center;
         background-image: 
         linear-gradient(
-          rgba(98, 16, 105, 0.185),
-          rgba(0, 0, 0, 0.541)),
+          rgba(98, 16, 105, 0.267),
+          rgba(0, 0, 0, 0.603)),
         url('banner1.jpg');
         max-width: 100%;
         object-fit: cover;
@@ -76,10 +76,9 @@
         fetch("./records.json")
         .then(res => res.json())
         .then(data => obj = data)
-        .then(() => console.log(obj));
-        console.log("COUP: ", obj)
+        .then(() => console.log(obj))
+        .then(() => loadTable(obj));
         function loadTable() {
-            console.log("COUP: ", obj)
             var fake = {
             "records":[
             {title:"First", date:"07 May 2021", entry:"Doe"},
@@ -116,7 +115,7 @@
             data_body.innerHTML = row;
         console.log('Jobs Done.');
         }
-        document.addEventListener('DOMContentLoaded', () => {loadTable()});
+        // document.addEventListener('DOMContentLoaded', () => {loadTable()});
     </script>
 </body>
 </html>
