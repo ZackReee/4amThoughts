@@ -47,7 +47,7 @@
             margin-right:30px;
             padding-left: 10px;
             padding-right: 10px;
-            padding-top: 1cm;
+            padding-top: 0.1%;
     }
 
     </style>
@@ -77,9 +77,9 @@
             }
 
         var zack;
-        fetch("records.json")
-        .then(data => zack = data)
-        .then(() => console.log("HELLO4", zack))
+        // fetch("records.json")
+        // .then(data => zack = data)
+        // .then(() => console.log("HELLO4", zack))
         var dataTable = document.getElementById('bodyTable')
         var myReq = new XMLHttpRequest();
         function loadTable() {
@@ -91,7 +91,7 @@
             ]
             }
             try {
-                console.log("i love u... ",fake.records[0])
+                console.log("i love u,  ",fake.records[0])
                 makeTable(fake)
             } catch (e) {
                 console.warn('Could not fetch data from database!');
@@ -100,14 +100,22 @@
         // myReq.send();
 
         function makeTable(dt){
-for (var i = 0; i < dt.records.length;i++){
-document.getElementById("e_title").innerHTML = dt.records[i].title
-document.getElementById("e_body").innerHTML = dt.records[i].entry
-document.getElementById("e_date").innerHTML = dt.records[i].date
-}
-        console.log('Jobs Done.')
+            var toAdd = document.createDocumentFragment();
+            for (var i = 0; i < dt.records.length;i++){
+                var newDiv = document.createElement('div');
+                newDiv.id = 'r'+i;
+                newDiv.className = 'para';
+                toAdd.appendChild(newDiv);
+                // document.getElementById("e_title").innerHTML = dt.records[i].title
+                // document.getElementById("e_body").innerHTML = dt.records[i].entry
+                // document.getElementById("e_date").innerHTML = dt.records[i].date
+                document.getElementById("r"+i).innerHTML = i;
+            }
+
+        document.appendChild(toAdd);
+        console.log('Jobs Done.');
         }
-        document.addEventListener('DOMContentLoaded', () => {loadTable()})
+        document.addEventListener('DOMContentLoaded', () => {loadTable()});
     </script>
 </body>
 </html>
