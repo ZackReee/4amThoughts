@@ -66,26 +66,17 @@
     </div>
 
     <script>
-        // fetch("records.json")
-        // .then(data => zack = data)
-        // .then(() => console.log("HELLO4", zack))
         var dataTable = document.getElementById('bodyTable')
         
         var obj;
-        
         fetch("./records.json")
         .then(res => res.json())
         .then(data => obj = data)
         .then(() => console.log(obj))
         .then(() => loadTable(obj));
+
+        console.log("Outside: ", obj)
         function loadTable(dt) {
-            var fake = {
-            "records":[
-            {title:"First", date:"07 May 2021", entry:"Doe"},
-            {title:"Second", date:"07 May 2021", entry:"Is a deer"},
-            {title:"Realisation that I'm lost", date:"08 May 2021", entry:"Finally, I have a bit more clarity towards myself now. Seemingly, being bad with directions and having mid life crisis shares a similar prime. That which is the failure to find oneself. And if I shall be unable to find myself, it is no wonder I am currently incapable to be found by others - including a potential partner. I shall divert my efforts into finding myself... Hopefully one day someone will be able to find me, and I'll be able to live life the way I want to live."}
-            ]
-            }
             try {
                 makeTable(dt)
             } catch (e) {
@@ -105,9 +96,9 @@
                 color: rgb(227, 192, 228);
                 padding-left: 20px;
                 padding-right: 20px;">
-                        <p>${dt.records[i].title}</p>
-                        <p>${dt.records[i].entry}</p>
-                        <p>${dt.records[i].date}</p>
+                        <p style="font-size: 24px;">${dt.records[i].title}</p>
+                        <p style="font-size: 16px;">${dt.records[i].entry}</p>
+                        <p style="font-size: 14px;">${dt.records[i].date}</p>
                         </div>
                         `
             }
