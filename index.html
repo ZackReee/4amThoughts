@@ -84,17 +84,18 @@
         return response.json();
         })
         .then(data => console.log(data));
-        function loadTable(dat) {
-            // var fake = {
-            // "records":[
-            // {title:"First", date:"07 May 2021", entry:"Doe"},
-            // {title:"Second", date:"07 May 2021", entry:"Is a deer"},
-            // {title:"Realisation that I'm lost", date:"08 May 2021", entry:"Finally, I have a bit more clarity towards myself now. Seemingly, being bad with directions and having mid life crisis shares a similar prime. That which is the failure to find oneself. And if I shall be unable to find myself, it is no wonder I am currently incapable to be found by others - including a potential partner. I shall divert my efforts into finding myself... Hopefully one day someone will be able to find me, and I'll be able to live life the way I want to live."}
-            // ]
-            // }
-            makeTable(dat)
+        console.log(fake);
+        function loadTable(dt) {
+            var fake = {
+            "records":[
+            {title:"First", date:"07 May 2021", entry:"Doe"},
+            {title:"Second", date:"07 May 2021", entry:"Is a deer"},
+            {title:"Realisation that I'm lost", date:"08 May 2021", entry:"Finally, I have a bit more clarity towards myself now. Seemingly, being bad with directions and having mid life crisis shares a similar prime. That which is the failure to find oneself. And if I shall be unable to find myself, it is no wonder I am currently incapable to be found by others - including a potential partner. I shall divert my efforts into finding myself... Hopefully one day someone will be able to find me, and I'll be able to live life the way I want to live."}
+            ]
+            }
+            makeTable(dt)
             try {
-                makeTable(dat)
+                makeTable(dt)
             } catch (e) {
                 console.warn('Could not fetch data from database!');
             }
