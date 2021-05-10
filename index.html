@@ -59,7 +59,7 @@
 <body>
     <div class="header">
         <h1 class = "title">4 A.M. Thoughts</h1>
-        <audio id="bgm1" class="bottomright" src="./HachiRoku-HarrisHeller.mp3" controls autoplay loop="true" onloadeddata="setHalfVolume()">
+        <audio id="bgm1" class="bottomright" src="./HachiRoku-HarrisHeller.mp3" controls autoplay loop="true" onload="setHalfVolume()">
             <p>If you are reading this, it is because your browser does not support the audio element.</p>
         </audio>
     </div>
@@ -116,7 +116,7 @@
 
         function setHalfVolume() {
             var myAudio = document.getElementById("bgm1");  
-            myAudio.volume = 0.01; //Changed this to 0.5 or 50% volume since the function is called Set Half Volume ;)
+            myAudio.volume = 0.01; //Change this to 0.5 for 50% volume
         }
         // document.addEventListener('DOMContentLoaded', () => {loadTable()});
     </script>
